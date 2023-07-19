@@ -14,6 +14,6 @@
         ```python app/main.py```
 3. 加入IP加入DB存取許可
     1. 到MongoDB SECURITY底下的Network Access將自己的IP位址加入存取許可。
-![](https://hackmd.io/_uploads/Hy79rYS93.png)
+![Network Access](https://hackmd.io/_uploads/Hy79rYS93.png)
     2. 點選Add IP Access中的 ADD CURRENT IP ADDRESS加入當前IP位址
-![](https://hackmd.io/_uploads/HkYeLFrq2.png)
+![Add IP](https://hackmd.io/_uploads/HkYeLFrq2.png)
