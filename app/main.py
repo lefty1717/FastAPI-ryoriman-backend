@@ -20,9 +20,9 @@ def create_application() -> FastAPI:
         openapi_url=CoreSetting.OPENAPI_URL 
     )
 
+    application.include_router(UserRouter)
     application.include_router(IngredientRouter)
     application.include_router(RecipeRouter)
-    application.include_router(UserRouter)
     application.include_router(FridgeRouter)
     application.include_router(ShoppingListRouter)
 

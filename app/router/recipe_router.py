@@ -13,24 +13,24 @@ router = APIRouter(
     tags=['recipes'],
 )
 
-@router.get('/recipe/{id}')
-async def fetch_recipe_by_id(recipe_id: str):
-    return RecipeEntity(connect.recipes.recipes.find_one({"_id": ObjectId(recipe_id)}))
-@router.get('/recipe/{name}', response_model=RecipeModel)
-async def fetch_recipe_by_name(name: str):
-    return RecipesEntity(connect.recipes.recipes.find({name: str(name)}))
+@router.get('/{id}')
+async def get_recipe_by_id(recipe_id: str):
+    return RecipeEntity(connect.ryoriman_db.recipes.find_one({"_id": ObjectId(recipe_id)}))
+@router.get('/{name}', response_model=RecipeModel)
+async def get_recipe_by_name(name: str):
+    return RecipesEntity(connect.ryoriman_db.recipes.find({name: str(name)}))
 
-@router.post('/recipe')
+@router.post('')
 async def create_recipe(recipe: RecipeModel):
-    connect.recipes.recipes.insert_one(recipe.dict())
+    connect.ryoriman_db.recipes.insert_one(recipe.dict())
     return recipe
 
-@router.put('/recipe/{id}')
+@router.put('/{id}')
 async def update_recipe(recipe_id: str, recipe: RecipeModel):
-    connect.recipes.recipes.update_one({"_id": ObjectId(recipe_id)}, {"$set": recipe.dict()})
+    connect.ryoriman_db.recipes.update_one({"_id": ObjectId(recipe_id)}, {"$set": recipe.dict()})
     return recipe
 
-@router.delete('/recipe/{id}')
+@router.delete('/{id}')
 async def delete_recipe(recipe_id: str):
-    connect.recipes.recipes.delete_one({"_id": ObjectId(recipe_id)})
+    connect.ryoriman_db.recipes.delete_one({"_id": ObjectId(recipe_id)})
     return recipe_id
