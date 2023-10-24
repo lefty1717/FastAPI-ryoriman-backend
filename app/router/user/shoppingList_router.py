@@ -14,11 +14,11 @@ router = APIRouter(
     tags=['Shopping List'],
 )
 
-@router.get("/get/{user_id}")
+@router.get('/{user_id}')
 async def get_shopping_list_by_user_id(user_id):
     res = shoppingList(connect.ryoriman_db.users.find_one({"_id": ObjectId(user_id)}))
     return res
-@router.post("/add/{user_id}")
+@router.post('/{user_id}')
 async def add_shopping_list_item(user_id: str, shopping_list_item: ShoppingList):
     try:
         exist_quantity = 0

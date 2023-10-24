@@ -16,7 +16,7 @@ router = APIRouter(
     tags=['user'],
 )
 
-@router.get('/all')
+@router.get('')
 async def get_all_by_user_id(user_id):
     res = userEntity(connect.ryoriman_db.users.find_one({"_id": ObjectId(user_id)}))
     return res

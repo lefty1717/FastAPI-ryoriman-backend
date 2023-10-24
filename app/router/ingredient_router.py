@@ -14,19 +14,19 @@ router = APIRouter(
     tags=['ingredients'],
 )
 
-@router.get("/all")
+@router.get('')
 async def get_all_ingredients():
     return ingredientsEntity(connect.ryoriman_db.ingredients.find())
-@router.get("/{id}")
+@router.get('/{id}')
 async def get_ingredients_by_id(id):
     return ingredientEntity(connect.ryoriman_db.ingredients.find_one({"_id": ObjectId(id)}))
 
-@router.post("/add")
+@router.post('')
 async def add_ingredient(ingredient: IngredientModel):
     connect.ryoriman_db.ingredients.insert_one(dict(ingredient))
     return await get_all_ingredients()
 
-@router.put("/update/{id}")
+@router.put('/{id}')
 async def update_ingredient(id, ingredient: IngredientModel):
     connect.ryoriman_db.ingredients.update_one(
         {
@@ -38,7 +38,7 @@ async def update_ingredient(id, ingredient: IngredientModel):
     )
     return await get_ingredients_by_id(id)
 
-@router.delete("/delete/{id}")
+@router.delete('/{id}')
 async def delete_ingredient(id):
     connect.ryoriman_db.ingredients.delete_one({"_id": ObjectId(id)})
     return 'delete success!'
