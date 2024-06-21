@@ -1,4 +1,4 @@
-# ryoriman-be
+# ryoriman-be FastAPI + MongoDB
 
 1. 安裝requirement.txt中需要的套件
     - 直接使用pip安裝
